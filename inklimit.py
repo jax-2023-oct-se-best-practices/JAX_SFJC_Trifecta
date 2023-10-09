@@ -23,7 +23,7 @@ def ink_limit_proportional(
     assert arr.dtype == np.uint8
     inkLimit = inkLimit / 100.  # range is 0. to 4.
     cmyks = arr / 255.          # range is 0. to 1.
-    if np.any(cmyks) > 255 * .6: # if any of the values are more than 60%, then we reduce to 60%
+    if np.any(cmyks) > .6: # if any of the values are more than 60%, then we reduce to 60%
         cmyks = cmyks * .60
     totals = np.sum(cmyks, axis=-1, keepdims=True)
     return (cmyks * 255.).astype(np.uint8)
